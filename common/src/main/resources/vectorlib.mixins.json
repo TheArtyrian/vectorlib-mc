@@ -1,0 +1,43 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.vertisoft.vectorlib.mixin",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_18",
+  "mixins": [
+    "acc.ChunkMapIntf",
+    "acc.ChunkTrackIntf",
+    "impl.DefaultAttributesMixin",
+    "impl.chunksync.ChunkSerialMixin",
+    "impl.eventsync.ServerLevelMixin",
+    "impl.eventsync.WorldGenRegMixin",
+    "impl.loot.LootBuilderMixin",
+    "impl.loot.LootPoolBuilderMixin",
+    "impl.loot.LootPoolMixin",
+    "impl.loot.LootTableMixin",
+    "impl.netsync.EntityNetSyncMixin",
+    "impl.tool.AxeItemMixin",
+    "impl.tool.HoeItemMixin",
+    "impl.tool.ShovelItemMixin",
+    "misc.ReportTypeMixin",
+    "server.PlayerListMixin",
+    "server.ServerGamePacketMixin"
+  ],
+  "client": [
+    "client.CapeLayerMixin",
+    "client.MultiPlayerSendMixin",
+    "client.PlayerInfoMixin",
+    "client.SplashMixin",
+    "impl.eventsync.ClientCommonHandlerMixin",
+    "impl.eventsync.ClientLevelMixin",
+    "impl.eventsync.ClientPacketMixin",
+    "impl.eventsync.LevelRendererMixin",
+    "suppress.CreateWorldScreenMixin",
+    "suppress.WorldOpenFlowsMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+

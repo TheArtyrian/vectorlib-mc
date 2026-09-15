@@ -1,0 +1,26 @@
+{
+  "multiplayer.vectorlib.player.joined_bad": "Unfortunately, %s joined the game",
+  "multiplayer.vectorlib.player.joined_bad.renamed": "Unfortunately, %s (formerly known as %s) joined the game",
+  "multiplayer.vectorlib.player.left_bad": "%s left the game (and hopefully stays gone)",
+
+  "multiplayer.vectorlib.player.joined_redna": "->> levelcache login 310121-2 :: %s %s %s %s.dat",
+  "multiplayer.vectorlib.player.joined_redna.renamed": "->> levelcache login 310121-2 :: %s %s %s %s.dat (formerly %s.dat)",
+  "multiplayer.vectorlib.player.left_redna": "* (Well, there is not a %s here.)",
+
+  "multiplayer.vectorlib.player.joined_bday": "%s joined the game. Wish them a happy birthday!",
+  "multiplayer.vectorlib.player.joined_bday.renamed": "%s (formerly known as %s) joined the game. Wish them a happy birthday!",
+  "multiplayer.vectorlib.player.left_bday": "%s left the game. Happy birthday!",
+
+  "itemTab.vectorlib.unknown_tab": "Unnamed VectorLib tab! Tell the dev!",
+
+  "commands.vectorlib.event.vanilla_no_exist": "There's no level event with that number; event IDs are usually between 1000-3500.",
+  "commands.vectorlib.event.eventsync_no_namespace": "That namespace does not have any registered %s EventSync actions",
+  "commands.vectorlib.event.eventsync_no_action": "That namespace has no %s EventSync action mapped to \"%s\"",
+  "commands.vectorlib.event.vanilla.success": "Played Vanilla event %s at %s",
+  "commands.vectorlib.event.eventsync.local_success": "Played Local EventSync event at %s",
+  "commands.vectorlib.event.eventsync.dual_success": "Played Dual EventSync event at %s & %s",
+  "commands.vectorlib.event.eventsync.entity_success": "Played Entity EventSync event on %s",
+  "commands.vectorlib.event.eventsync.global_success": "Played Global EventSync event at %s",
+  "commands.vectorlib.event.eventsync.list_fail": "There are no registered %s events in VectorLib!",
+  "commands.vectorlib.event.eventsync.list_events": "%s event list for %s has the following events: <%s>"
+}
