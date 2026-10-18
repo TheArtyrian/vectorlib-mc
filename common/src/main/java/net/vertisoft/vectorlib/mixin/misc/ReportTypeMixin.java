@@ -48,7 +48,7 @@ public abstract class ReportTypeMixin
                 "Your crash WILL be reported, but first I must QUICKLY tell y'all that...",
                 "Sorry, no free cake for you!",
                 "Whoops! You have to put the CD in your computer!",
-                "Famous Frontiers & VectorLib mod developer Artyrian was subsequently taken out back and put down",
+                "Famous VectorLib mod developer Artyrian was subsequently taken out back and put down",
                 "Reality is often disappointing, isn't it?",
                 "Today's crash is brought to you by VectorLib",
                 "Enjoying the crashes? Also try Realm of the Mad God!"

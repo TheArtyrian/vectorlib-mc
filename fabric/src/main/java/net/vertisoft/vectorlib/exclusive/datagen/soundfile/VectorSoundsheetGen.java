@@ -22,6 +22,8 @@ import java.util.concurrent.CompletableFuture;
  */
 public abstract class VectorSoundsheetGen implements DataProvider
 {
+    protected static final String MINECRAFT = ResourceLocation.DEFAULT_NAMESPACE;
+
     // All common sound names
     private static final String JSON_NAME = "sounds.json";
     private static final String SOUNDS = "sounds";

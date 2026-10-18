@@ -30,6 +30,10 @@ public class VectorLibNF
     {
         ((VectorRegNF)VectorLib.REGISTRY).setEventBus(ModLoadingContext.get().getActiveContainer().getEventBus());
 
+        eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::commonSetup);
+        eventBus.addListener(this::payloadSetup);
+
         VectorLib.bootstrap();
         sidedBoot(eventBus);
     }

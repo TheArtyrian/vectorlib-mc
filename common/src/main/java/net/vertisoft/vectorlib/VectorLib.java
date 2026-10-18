@@ -43,7 +43,7 @@ public class VectorLib
 
     public static <T> T load(Class<T> classy)
     {
-        final T service = ServiceLoader.load(classy)
+        final T service = ServiceLoader.load(classy, VectorLib.class.getClassLoader())
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Couldn't load the VectorLib service for " + classy.getName() + "! Is the META-INF broken?"));
         LOGGER.debug("Successfully loaded VectorLib: {} -> service of {}.", service, classy);
@@ -53,7 +53,7 @@ public class VectorLib
     public static void bootstrap()
     {
         LOGGER.info(
-                "\n =====> [[VectorLib]] - a multiloader porting library for Frontiers by Artyrian" +
+                "\n =====> [[VectorLib]] - a multiloader porting library for mods by Artyrian" +
                 "\n =====> Special thanks to Yirmiri (RunicLib), Hecco (NexusLib), & Zeus (RefractionAPI)" +
                 "\n =====> Protip: " + VectorLib.SYSTEM.doAGamerMoment()
         );

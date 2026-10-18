@@ -80,7 +80,7 @@ public class VectorSystems
             "Insert cash, or select payment type",
             "Press F to zipline boost",
             "You have not crashed! Click here to crash",
-            "Dandruff is a good substitute for shredded parmesan",
+            "Dandruff is a good substitute for shredded parmesean",
             "Attack while it's tail's up!",
             "OwOLib's wisdoms are far funnier than this poor excuse of a stupid sentence generator, also please don't kill me owo devs",
             "The world's in a pretty tough spot right now. I'm just glad you're here, though. Stay strong. :)",
@@ -104,7 +104,15 @@ public class VectorSystems
             "Don't write multiloader code or you will hate yourself for eternity",
             "Eat a good breakfast, and you will feel like taking the world head-on",
             "Be like Dani, drink your milk and abuse Unity's particle system",
-            "Take a shower, I can smell you from the east coast"
+            "Take a shower, I can smell you from the east coast",
+            "you are dead",
+            "Remember to take a break approximately every 30 minutes!",
+            "Can you shut up about the direction and magnitude",
+            "Never tell the world your dreams.",
+            "Frontiers is dead, I'm not sure why so many of my protips reference it",
+            "My blood is a controlled substance in 42 states",
+            "Har har har har har har har har har haaar",
+            "VectorLib killed my grandma"
     );
 
     // Suppression warning message
