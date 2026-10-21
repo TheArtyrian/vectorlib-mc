@@ -1,4 +1,4 @@
-package net.vertisoft.vectorlib.agnostic.lolololol;
+package net.vertisoft.vectorlib.agnostic.cosmetic.joinmsg;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.networking.data.payloads.NetSyncPayload;
+import net.vertisoft.vectorlib.agnostic.networking.data.payloads.ClientNetSyncPayload;
 
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -319,7 +319,7 @@ public class VectorNetSync
     {
         if (!this.TRACKING.level().isClientSide && this.sync_to_client)
         {
-            VectorLib.NETWORK.sendToAllTrackingEntity(this.TRACKING, new NetSyncPayload(this.TRACKING.getId(), this.TAG));
+            VectorLib.NETWORK.sendToAllTrackingEntity(this.TRACKING, new ClientNetSyncPayload(this.TRACKING.getId(), this.TAG));
         }
     }
 
@@ -328,7 +328,7 @@ public class VectorNetSync
     {
         if (!this.TRACKING.level().isClientSide && this.sync_to_client)
         {
-            VectorLib.NETWORK.sendToPlayer(player, new NetSyncPayload(this.TRACKING.getId(), this.TAG));
+            VectorLib.NETWORK.sendToPlayer(player, new ClientNetSyncPayload(this.TRACKING.getId(), this.TAG));
         }
     }
 

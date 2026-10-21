@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.resources.PlayerSkin;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.cosmetic.capes.VectorCapeMan;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -32,13 +33,10 @@ public abstract class CapeLayerMixin
             @Local(argsOnly = true) AbstractClientPlayer abstractClientPlayerEntity,
             @Local PlayerSkin tex)
     {
-        if (VectorLib.SYSTEM.TRANSPARENT_CAPES.contains(abstractClientPlayerEntity.getStringUUID()))
-        {
-            return original.call(instance, RenderType.entityCutoutNoCull(tex.capeTexture()));
-        }
-        else
-        {
-            return original.call(instance, renderLayer);
-        }
+        RenderType type = renderLayer;
+        boolean transparentCape = VectorCapeMan.hasTransparentCapeOn(abstractClientPlayerEntity.getUUID());
+        if (transparentCape && tex.capeTexture() != null) type = RenderType.entityCutoutNoCull(tex.capeTexture());
+
+        return original.call(instance, type);
     }
 }

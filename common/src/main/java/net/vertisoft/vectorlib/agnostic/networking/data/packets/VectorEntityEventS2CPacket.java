@@ -7,7 +7,7 @@ import net.minecraft.network.protocol.PacketType;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorS2CPayloads;
 import net.vertisoft.vectorlib.mixin_intf.event.VectorClientPlay;
 
 public class VectorEntityEventS2CPacket implements Packet<ClientGamePacketListener>
@@ -44,9 +44,8 @@ public class VectorEntityEventS2CPacket implements Packet<ClientGamePacketListen
         buffer.writeInt(this.data);
     }
 
-    public PacketType<VectorEntityEventS2CPacket> type() {
-        return VectorPayloads.VECTOR_ENTITYEVENT;
-    }
+    public PacketType<VectorEntityEventS2CPacket> type() { return VectorS2CPayloads.VECTOR_ENTITYEVENT; }
+
     public void handle(ClientGamePacketListener clientGamePacketListener)
     {
         ((VectorClientPlay)clientGamePacketListener).vectorLib$handleEntityEvent(this);

@@ -2,11 +2,15 @@ package net.vertisoft.vectorlib;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.vertisoft.vectorlib.agnostic.util.VectorEventCommons;
 import net.vertisoft.vectorlib.agnostic.util.VectorTrade;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
 
@@ -44,5 +48,15 @@ public class VectorLibNFEvent
         {
             parameter.accept(event.getDispatcher());
         }
+    }
+
+    @SubscribeEvent
+    public static void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) VectorEventCommons.serverLogin(player);
+    }
+
+    @SubscribeEvent
+    public static void onLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) VectorEventCommons.serverLogout(player);
     }
 }

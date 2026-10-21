@@ -49,6 +49,9 @@ public class VectorPlatformFabric implements VectorPlatformIntf
     public boolean isClient() { return FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT; }
 
     @Override
+    public Path getGameDirectory()  { return FabricLoader.getInstance().getGameDir(); }
+
+    @Override
     public boolean isDatagen()
     {
         try

@@ -4,7 +4,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.protocol.ProtocolInfoBuilder;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.GameProtocols;
-import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorS2CPayloads;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,6 +16,6 @@ public class GameProtocolMixinNF
     @Inject(method = "lambda$static$1", at = @At(value = "TAIL"))
     private static void vectorLib$appenderS2C(ProtocolInfoBuilder<ClientGamePacketListener, RegistryFriendlyByteBuf> builder, CallbackInfo ci)
     {
-        VectorPayloads.chainS2CPackets(builder);
+        VectorS2CPayloads.chainS2CPackets(builder);
     }
 }

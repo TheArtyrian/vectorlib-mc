@@ -20,6 +20,7 @@
     "impl.tool.HoeItemMixin",
     "impl.tool.ShovelItemMixin",
     "misc.ReportTypeMixin",
+    "player.ServerPlayerMixin",
     "server.PlayerListMixin",
     "server.ServerGamePacketMixin"
   ],
@@ -27,6 +28,7 @@
     "client.CapeLayerMixin",
     "client.MultiPlayerSendMixin",
     "client.PlayerInfoMixin",
+    "client.SkinScreenMixin",
     "client.SplashMixin",
     "impl.eventsync.ClientCommonHandlerMixin",
     "impl.eventsync.ClientLevelMixin",

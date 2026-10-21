@@ -7,9 +7,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.lolololol.VectorJoinMsg;
+import net.vertisoft.vectorlib.agnostic.cosmetic.capes.VectorCapeMan;
+import net.vertisoft.vectorlib.agnostic.cosmetic.joinmsg.VectorJoinMsg;
 import net.vertisoft.vectorlib.agnostic.splash.VectorSplash;
-import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -17,25 +17,31 @@ import java.util.*;
 
 public class VectorSystems
 {
-    // RandomSource
-    private final RandomSource RANDOM;
-
-    // Splash mixin controller
-    public final VectorSplash SPLASHES = new VectorSplash();
-
     // Important contributor IDs
-    public final Map<String, String> CONTRIB_IDS = new HashMap<>();
+    public static final Map<String, UUID> CONTRIBUTORS = Map.ofEntries(
+        // NEOFORGE DEV //////////////////////////////
+        Map.entry("Dev", UUID.fromString("380df991-f603-344c-a090-369bad2a924a")),
+        //////////////////////////////////////////////
+        Map.entry("Artyrian", UUID.fromString("774e37fc-1ca4-4156-827e-661afa24cb56")),
+        Map.entry("Yurjezich", UUID.fromString("2a9c377e-26cc-4d48-a62a-05ce3ac2f405")),
+        Map.entry("KirbyTG", UUID.fromString("651fefc2-fae9-46ea-b383-8e45798fc1b2")),
+        Map.entry("LucarioDeath", UUID.fromString("2f213cea-2443-4313-8aa4-0f4c72687ddd")),
+        Map.entry("EmeraldEiscue", UUID.fromString("3ab1a668-b818-4d44-b81c-ac1b105c7692")),
+        Map.entry("Rednalokin", UUID.fromString("da448516-03c1-4695-b659-37daa441bd7f")),
+        Map.entry("Hecco", UUID.fromString("bc56b2c8-9ef8-4532-b045-00f44804bca4")),
+        Map.entry("Diemant", UUID.fromString("32290fa8-77ed-4794-9cba-25c09e7f4e1d")),
+        Map.entry("Yirmiri", UUID.fromString("1cedf927-5c8f-4650-95e9-808fc8f94d00")),
+        Map.entry("Courtjjester", UUID.fromString("95e928ac-0cc8-4bf9-8451-d33da7933fd3")),
+        Map.entry("SlimeSlabs", UUID.fromString("54701376-b19a-4fc1-b107-74626b0d1bfb"))
+    );
 
-    // Special cape list
-    public static final String CAPE_DIR = "textures/entity/capes/";
-    public final Map<String, ResourceLocation> CONTRIBUTOR_CAPES = new HashMap<>();
-    public final List<String> TRANSPARENT_CAPES = new ArrayList<>();
+    private static final RandomSource RANDOM = RandomSource.createNewThreadLocalInstance();     // Randomsource
 
     // Special join/leave messages
-    public final Map<String, VectorJoinMsg> JOIN_MSGS = new HashMap<>();
+    public final Map<UUID, VectorJoinMsg> JOIN_MSGS = new HashMap<>();
 
     // I'm so funny
-    private final List<String> GAMER_MOMENTS = List.of(
+    private static final List<String> GAMER_MOMENTS = List.of(
             "Frontiers is the worst mod ever made",
             "Frontiers is the best mod ever made",
             "Oggy <3<3<3<3<3<3<3<3<3<3<3",
@@ -112,7 +118,8 @@ public class VectorSystems
             "Frontiers is dead, I'm not sure why so many of my protips reference it",
             "My blood is a controlled substance in 42 states",
             "Har har har har har har har har har haaar",
-            "VectorLib killed my grandma"
+            "VectorLib killed my grandma",
+            "You can make a library mod without using vibe coding! Just like VectorLib!"
     );
 
     // Suppression warning message
@@ -124,81 +131,5 @@ public class VectorSystems
     // Here for making my life easier
     public static final String JEI_PREFIX = "jei.item.desc.";
 
-    public VectorSystems()
-    {
-        // Randomizer
-        this.RANDOM = RandomSource.createNewThreadLocalInstance();
-
-        // Default contributor IDs
-        this.CONTRIB_IDS.put("Artyrian", "774e37fc-1ca4-4156-827e-661afa24cb56");
-        this.CONTRIB_IDS.put("Yurjezich", "2a9c377e-26cc-4d48-a62a-05ce3ac2f405");
-        this.CONTRIB_IDS.put("KirbyTG", "651fefc2-fae9-46ea-b383-8e45798fc1b2");
-        this.CONTRIB_IDS.put("LucarioDeath", "2f213cea-2443-4313-8aa4-0f4c72687ddd");
-        this.CONTRIB_IDS.put("EmeraldEiscue", "3ab1a668-b818-4d44-b81c-ac1b105c7692");
-        this.CONTRIB_IDS.put("Rednalokin", "da448516-03c1-4695-b659-37daa441bd7f");
-        this.CONTRIB_IDS.put("Hecco", "bc56b2c8-9ef8-4532-b045-00f44804bca4");
-        this.CONTRIB_IDS.put("Diemant", "32290fa8-77ed-4794-9cba-25c09e7f4e1d");
-        this.CONTRIB_IDS.put("Yirmiri", "1cedf927-5c8f-4650-95e9-808fc8f94d00");
-        this.CONTRIB_IDS.put("Courtjjester", "95e928ac-0cc8-4bf9-8451-d33da7933fd3");
-        this.CONTRIB_IDS.put("SlimeSlabs", "54701376-b19a-4fc1-b107-74626b0d1bfb");
-
-        // Default Capes
-        this.addContribCape(this.getContribID("Yurjezich"), VectorLib.id(CAPE_DIR + "yurjezich_cape.png"), false);
-        this.addContribCape(this.getContribID("LucarioDeath"), VectorLib.id(CAPE_DIR + "ld_cape.png"), false);
-        this.addContribCape(this.getContribID("EmeraldEiscue"), VectorLib.id(CAPE_DIR + "eiscue_cape.png"), false);
-        this.addContribCape(this.getContribID("Courtjjester"), VectorLib.id(CAPE_DIR + "courtjjester_cape.png"), true);
-        this.addContribCape(this.getContribID("Rednalokin"), VectorLib.id(CAPE_DIR + "rednalokin_cape.png"), true);
-
-        // Join msgs
-        this.addJoinLeaveMsg(
-                this.getContribID("Artyrian"),
-                "multiplayer.vectorlib.player.joined_bad",
-                "multiplayer.vectorlib.player.joined_bad.renamed",
-                "multiplayer.vectorlib.player.left_bad",
-                ChatFormatting.GOLD.getColor()
-        );
-        this.addJoinLeaveMsg(
-                this.getContribID("Rednalokin"),
-                "multiplayer.vectorlib.player.joined_redna",
-                "multiplayer.vectorlib.player.joined_redna.renamed",
-                "multiplayer.vectorlib.player.left_redna",
-                0xE44239,
-                new VectorJoinMsg.CustomComponentSet()
-                {
-                    @Override public MutableComponent join(String id, ServerPlayer player)
-                    {
-                        LocalDate localDate = LocalDate.now();
-                        String month = localDate.getMonth().getDisplayName(TextStyle.SHORT, Locale.UK);
-                        String day = String.valueOf(localDate.getDayOfMonth());
-                        String yr = String.valueOf(localDate.getYear());
-                        return Component.translatable(id, month, day, yr, player.getDisplayName());
-                    }
-                    @Override public MutableComponent joinRenamed(String id, ServerPlayer player, String oldName)
-                    {
-                        LocalDate localDate = LocalDate.now();
-                        String month = localDate.getMonth().getDisplayName(TextStyle.SHORT, Locale.UK);
-                        String day = String.valueOf(localDate.getDayOfMonth());
-                        String yr = String.valueOf(localDate.getYear());
-                        return Component.translatable(id, month, day, yr, player.getDisplayName(), oldName);
-                    }
-                }
-        );
-        this.addJoinLeaveColor(this.getContribID("Yurjezich"), 0x49FFCE);
-        this.addJoinLeaveColor(this.getContribID("EmeraldEiscue"), 0x326AE9);
-        this.addJoinLeaveColor(this.getContribID("Courtjjester"), 0xFF4DDF);
-    }
-
-    @Nullable public String getContribID(String name) { return this.CONTRIB_IDS.getOrDefault(name, null); }
-
-    public String doAGamerMoment() { return this.GAMER_MOMENTS.get(this.RANDOM.nextInt(this.GAMER_MOMENTS.size())); }
-
-    public void addContribCape(String ID, ResourceLocation loc, boolean transparent)
-    {
-        this.CONTRIBUTOR_CAPES.put(ID, loc);
-        if (transparent) this.TRANSPARENT_CAPES.add(ID);
-    }
-
-    public void addJoinLeaveMsg(String ID, String join, String rename, String leave, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(join, rename, leave, new VectorJoinMsg.CustomComponentSet(){}, color)); }
-    public void addJoinLeaveMsg(String ID, String join, String rename, String leave, Integer color, VectorJoinMsg.CustomComponentSet set) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(join, rename, leave, set, color)); }
-    public void addJoinLeaveColor(String ID, Integer color) { this.JOIN_MSGS.put(ID, new VectorJoinMsg(color)); }
+    public static String doAGamerMoment() { return GAMER_MOMENTS.get(RANDOM.nextInt(GAMER_MOMENTS.size())); }
 }

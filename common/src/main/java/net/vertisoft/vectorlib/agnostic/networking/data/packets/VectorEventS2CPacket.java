@@ -6,7 +6,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketType;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorS2CPayloads;
 import net.vertisoft.vectorlib.mixin_intf.event.VectorClientPlay;
 
 public class VectorEventS2CPacket implements Packet<ClientGamePacketListener>
@@ -47,7 +47,7 @@ public class VectorEventS2CPacket implements Packet<ClientGamePacketListener>
         buf.writeBoolean(this.globalEvent);
     }
 
-    @Override public PacketType<VectorEventS2CPacket> type() { return VectorPayloads.VECTOR_EVENTSYNC; }
+    @Override public PacketType<VectorEventS2CPacket> type() { return VectorS2CPayloads.VECTOR_EVENTSYNC; }
 
     @Override
     public void handle(ClientGamePacketListener clientGamePacketListener)

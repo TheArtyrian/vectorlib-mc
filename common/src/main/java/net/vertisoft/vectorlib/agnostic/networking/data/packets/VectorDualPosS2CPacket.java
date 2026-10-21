@@ -6,7 +6,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketType;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.phys.Vec3;
-import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorS2CPayloads;
 import net.vertisoft.vectorlib.mixin_intf.event.VectorClientPlay;
 
 public class VectorDualPosS2CPacket implements Packet<ClientGamePacketListener>
@@ -47,7 +47,7 @@ public class VectorDualPosS2CPacket implements Packet<ClientGamePacketListener>
         buf.writeInt(this.data);
     }
 
-    @Override public PacketType<VectorDualPosS2CPacket> type() { return VectorPayloads.VECTOR_DUALSYNC; }
+    @Override public PacketType<VectorDualPosS2CPacket> type() { return VectorS2CPayloads.VECTOR_DUALSYNC; }
 
     @Override
     public void handle(ClientGamePacketListener clientGamePacketListener)

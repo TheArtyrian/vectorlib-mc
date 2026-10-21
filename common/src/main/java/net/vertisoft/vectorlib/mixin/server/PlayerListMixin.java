@@ -7,7 +7,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.lolololol.VectorJoinMsg;
+import net.vertisoft.vectorlib.agnostic.cosmetic.joinmsg.VectorJoinMsg;
+import net.vertisoft.vectorlib.agnostic.cosmetic.joinmsg.VectorJoinMsgMan;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -24,9 +25,9 @@ public abstract class PlayerListMixin
             @Local(ordinal = 0) String string
             )
     {
-        if (VectorLib.SYSTEM.JOIN_MSGS.containsKey(player.getStringUUID()))
+        VectorJoinMsg msg = VectorJoinMsgMan.getMsg(player.getUUID());
+        if (msg != null)
         {
-            VectorJoinMsg msg = VectorLib.SYSTEM.JOIN_MSGS.get(player.getStringUUID());
             boolean formerName = !(player.getGameProfile().getName().equalsIgnoreCase(string));
 
             Component newType = msg.changeJoin(message, player, formerName, string);

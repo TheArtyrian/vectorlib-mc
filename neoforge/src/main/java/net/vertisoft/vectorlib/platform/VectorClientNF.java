@@ -15,15 +15,12 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.neoforged.neoforge.event.entity.item.ItemEvent;
 import net.vertisoft.vectorlib.mixin_intf.network.MulPlayIntf;
 
 public class VectorClientNF implements VectorClientIntf
 {
     private IEventBus EVENT_BUS = ModLoadingContext.get().getActiveContainer().getEventBus();
-    public void setEventBus(IEventBus eventBus) {
-        this.EVENT_BUS = eventBus;
-    }
+    public void setEventBus(IEventBus eventBus) { this.EVENT_BUS = eventBus; }
 
     @Override
     public void setRenderLayer(Block block, RenderType renderType)

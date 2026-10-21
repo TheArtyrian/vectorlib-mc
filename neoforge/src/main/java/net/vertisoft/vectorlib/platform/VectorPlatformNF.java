@@ -37,6 +37,9 @@ public class VectorPlatformNF implements VectorPlatformIntf
     public Path getConfigDirectory() { return FMLPaths.CONFIGDIR.get(); }
 
     @Override
+    public Path getGameDirectory() { return FMLPaths.GAMEDIR.get(); }
+
+    @Override
     public String getModVersion(String mod)
     {
         String ret = "";

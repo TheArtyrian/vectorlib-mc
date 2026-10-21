@@ -22,6 +22,9 @@ public interface VectorPlatformIntf
     /** Checks if currently running on the client. */
     boolean isClient();
 
+    /** Gets the game directory for the platform. */
+    Path getGameDirectory();
+
     /** Gets the config directory for the platform. */
     Path getConfigDirectory();
 

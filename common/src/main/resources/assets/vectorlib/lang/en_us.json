@@ -13,6 +13,16 @@
 
   "itemTab.vectorlib.unknown_tab": "Unnamed VectorLib tab! Tell the dev!",
 
+  "vectorlib.button.capeman": "Vectorlib Cape: %s",
+
+  "cape.vectorlib.disabled": "Disabled",
+  "cape.vectorlib.type.artyrian_cape": "Chromachronos",
+  "cape.vectorlib.type.yurjezich_cape": "Bluezen",
+  "cape.vectorlib.type.ld_cape": "Borne",
+  "cape.vectorlib.type.eiscue_cape": "Emerald Ice",
+  "cape.vectorlib.type.courtjjester_cape": "Lush",
+  "cape.vectorlib.type.rednalokin_cape": "Hallowkin",
+
   "commands.vectorlib.event.vanilla_no_exist": "There's no level event with that number; event IDs are usually between 1000-3500.",
   "commands.vectorlib.event.eventsync_no_namespace": "That namespace does not have any registered %s EventSync actions",
   "commands.vectorlib.event.eventsync_no_action": "That namespace has no %s EventSync action mapped to \"%s\"",

@@ -36,7 +36,7 @@ public class SplashMixin
     protected List<String> vectorLib$appendAllLists(List<String> original, @Local(argsOnly = true) ResourceManager resourceManager, @Local(argsOnly = true) ProfilerFiller profiler)
     {
         int hashcode = 125780783;
-        for (ResourceLocation reader_id : VectorLib.SYSTEM.SPLASHES.textfiles())
+        for (ResourceLocation reader_id : VectorSplash.textfiles())
         {
             try
             {
@@ -68,9 +68,9 @@ public class SplashMixin
         }
 
         // Add all splashes from raw texts
-        original.addAll(VectorLib.SYSTEM.SPLASHES.rawTexts());
+        original.addAll(VectorSplash.rawTexts());
 
-        if (VectorLib.SYSTEM.SPLASHES.DEBUG_PRINTER)
+        if (VectorSplash.DEBUG_PRINTER)
         {
             String debug_printer = "";
             for (String og : original)
@@ -86,7 +86,7 @@ public class SplashMixin
     @Inject(method = "getSplash", at = @At("HEAD"), cancellable = true)
     private void vectorLib$replaceAutocule(CallbackInfoReturnable<SplashRenderer> cir)
     {
-        Map<VectorSplash.RenderContext, Supplier<Boolean>> vecMap = VectorLib.SYSTEM.SPLASHES.renderMap();
+        Map<VectorSplash.RenderContext, Supplier<Boolean>> vecMap = VectorSplash.renderMap();
         for (VectorSplash.RenderContext context : vecMap.keySet())
         {
             if (vecMap.get(context).get()) cir.setReturnValue(context.create(RANDOM));

@@ -3,6 +3,8 @@ package net.vertisoft.vectorlib;
 import net.minecraft.resources.ResourceLocation;
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import net.vertisoft.vectorlib.agnostic.commands.VLEventCommand;
+import net.vertisoft.vectorlib.agnostic.cosmetic.capes.VectorCapeMan;
+import net.vertisoft.vectorlib.agnostic.cosmetic.joinmsg.VectorJoinMsgMan;
 import net.vertisoft.vectorlib.platform.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +25,6 @@ public class VectorLib
     // ID + Logger
     public static final String ID = "vectorlib";
     public static final Logger LOGGER = LoggerFactory.getLogger(ID);
-
-    // Universal systems
-    public static final VectorSystems SYSTEM = new VectorSystems();
 
     // Cross-platform systems
     public static final VectorPlatformIntf PLATFORM = load(VectorPlatformIntf.class);
@@ -55,10 +54,14 @@ public class VectorLib
         LOGGER.info(
                 "\n =====> [[VectorLib]] - a multiloader porting library for mods by Artyrian" +
                 "\n =====> Special thanks to Yirmiri (RunicLib), Hecco (NexusLib), & Zeus (RefractionAPI)" +
-                "\n =====> Protip: " + VectorLib.SYSTEM.doAGamerMoment()
+                "\n =====> Protip: " + VectorSystems.doAGamerMoment()
         );
 
         CONFIG = VectorLibConfig.load_config();
+
+        VectorCapeMan.init();
+        VectorJoinMsgMan.init();
+
         VectorLib.strapLibContent();
     }
 

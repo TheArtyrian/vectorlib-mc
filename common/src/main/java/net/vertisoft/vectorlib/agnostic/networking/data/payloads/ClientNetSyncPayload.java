@@ -5,17 +5,17 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.vertisoft.vectorlib.agnostic.networking.data.VectorPayloads;
+import net.vertisoft.vectorlib.agnostic.networking.data.VectorS2CPayloads;
 
-public record NetSyncPayload(int id, CompoundTag nbt) implements CustomPacketPayload
+public record ClientNetSyncPayload(int id, CompoundTag nbt) implements CustomPacketPayload
 {
-    public static final Type<NetSyncPayload> ID = new Type<>(VectorPayloads.VECTOR_NETSYNC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, NetSyncPayload> CODEC = StreamCodec.composite(
+    public static final Type<ClientNetSyncPayload> ID = new Type<>(VectorS2CPayloads.VECTOR_NETSYNC);
+    public static final StreamCodec<RegistryFriendlyByteBuf, ClientNetSyncPayload> CODEC = StreamCodec.composite(
             ByteBufCodecs.INT,
-            NetSyncPayload::id,
+            ClientNetSyncPayload::id,
             ByteBufCodecs.fromCodec(CompoundTag.CODEC),
-            NetSyncPayload::nbt,
-            NetSyncPayload::new
+            ClientNetSyncPayload::nbt,
+            ClientNetSyncPayload::new
     );
 
     @Override
