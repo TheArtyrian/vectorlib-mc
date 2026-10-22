@@ -41,7 +41,8 @@ public class VecClientCapeMan
 
         VectorLib.LOGGER.info("Initializing VectorLib client cape manager...");
 
-        if (!VectorSystems.CONTRIBUTORS.containsValue(uid)) {
+        String vecCape = VectorCapeMan.getFirstApplicableCape(uid);
+        if (vecCape.isEmpty()) {
             CAPE_WORTHY = false;
             VectorLib.LOGGER.info("Active user isn't allowed to have a cape - ignoring cape manager");
             return;
@@ -49,7 +50,7 @@ public class VecClientCapeMan
 
         boolean loaded = load();
         if (!loaded) {
-            CAPE_ID = VectorCapeMan.getFirstApplicableCape(uid);
+            CAPE_ID = vecCape;
             save();
         }
     }

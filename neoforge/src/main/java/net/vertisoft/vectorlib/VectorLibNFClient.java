@@ -5,7 +5,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.vertisoft.vectorlib.agnostic.util.VectorClientCommons;
 
 @EventBusSubscriber(modid = VectorLib.ID, value = Dist.CLIENT)
