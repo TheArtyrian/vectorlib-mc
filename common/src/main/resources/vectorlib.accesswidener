@@ -1,4 +1,8 @@
 accessWidener   v2    named
 
+# ChunkMap
 accessible class net/minecraft/server/level/ChunkMap$TrackedEntity
 accessible class net/minecraft/server/ReloadableServerRegistries$EmptyTagLookupWrapper
+# Parrot (Model)
+accessible method net/minecraft/client/model/ParrotModel prepare (Lnet/minecraft/client/model/ParrotModel$State;)V
+accessible method net/minecraft/client/model/ParrotModel setupAnim (Lnet/minecraft/client/model/ParrotModel$State;IFFFFF)V

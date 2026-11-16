@@ -12,6 +12,7 @@
     "impl.ReloadableServerRegMixinNF"
   ],
   "client": [
+    "entity.ParrotShoulderMixinNF"
   ],
   "server": [],
   "injectors": {

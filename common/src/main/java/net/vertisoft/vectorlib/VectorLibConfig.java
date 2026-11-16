@@ -16,6 +16,7 @@ public class VectorLibConfig
     // All configs for the lib
     private boolean suppressExperimentalWarn = true;        // Suppresses the experimental warnings screen.
     private boolean vectorLibCommandsVisible = true;        // When false, will disable VectorLib commands like "vl_event".
+    private boolean entitySkinEasterEggs = true;            // When true, entity custom easter egg skins (i.e "Kazooie" and "Romeo") will appear.
 
     public static VectorLibConfig load_config()
     {
@@ -59,6 +60,7 @@ public class VectorLibConfig
         }
     }
 
-    public boolean doSuppressExperimentalWarn() { return suppressExperimentalWarn; }
-    public boolean doVectorCommands() { return vectorLibCommandsVisible; }
+    public boolean doSuppressExperimentalWarn() { return this.suppressExperimentalWarn; }
+    public boolean doVectorCommands() { return this.vectorLibCommandsVisible; }
+    public boolean doEntitySkins() { return this.entitySkinEasterEggs; }
 }
