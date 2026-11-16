@@ -12,10 +12,7 @@ import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.vertisoft.vectorlib.agnostic.networking.data.VectorS2CPayloads;
 import net.vertisoft.vectorlib.agnostic.networking.data.VectorC2SPayloads;
-import net.vertisoft.vectorlib.agnostic.networking.data.payloads.ClientClearCapePayload;
-import net.vertisoft.vectorlib.agnostic.networking.data.payloads.ClientNetSyncPayload;
-import net.vertisoft.vectorlib.agnostic.networking.data.payloads.ClientSyncCapePayload;
-import net.vertisoft.vectorlib.agnostic.networking.data.payloads.SetCapePayload;
+import net.vertisoft.vectorlib.agnostic.networking.data.payloads.*;
 import net.vertisoft.vectorlib.exclusive.NFLootModSet;
 import net.vertisoft.vectorlib.platform.VectorRegNF;
 

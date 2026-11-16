@@ -79,6 +79,15 @@ public class VectorCapeMan
                         VectorSystems.CONTRIBUTORS.get("Rednalokin")
                 )
         ));
+        // Slimeslabs Cape
+        CAPES.add(new VecCape(
+                "slimeslabs_cape",
+                true,
+                List.of(
+                        VectorSystems.CONTRIBUTORS.get("Dev"),
+                        VectorSystems.CONTRIBUTORS.get("SlimeSlabs")
+                )
+        ));
     }
 
     /////////////////////////////////////////////////////////////

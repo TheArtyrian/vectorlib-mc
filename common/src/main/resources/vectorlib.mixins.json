@@ -21,6 +21,7 @@
     "impl.tool.ShovelItemMixin",
     "misc.ReportTypeMixin",
     "player.ServerPlayerMixin",
+    "server.MinecraftServerMixin",
     "server.PlayerListMixin",
     "server.ServerGamePacketMixin"
   ],

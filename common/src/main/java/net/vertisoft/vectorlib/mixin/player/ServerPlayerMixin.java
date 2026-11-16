@@ -1,15 +1,10 @@
 package net.vertisoft.vectorlib.mixin.player;
 
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.GameRules;
-import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -30,7 +25,7 @@ public class ServerPlayerMixin
 
         if (do_loot && me.getUUID().equals(VectorSystems.CONTRIBUTORS.get("Artyrian")))
         {
-            ItemStack itemStack = new ItemStack(Items.BEETROOT);
+            ItemStack itemStack = new ItemStack(Items.POISONOUS_POTATO);
             me.spawnAtLocation(itemStack);
         }
     }

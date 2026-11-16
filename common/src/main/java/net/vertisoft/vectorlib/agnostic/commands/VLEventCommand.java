@@ -1,11 +1,9 @@
 package net.vertisoft.vectorlib.agnostic.commands;
 
-import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -15,13 +13,17 @@ import net.minecraft.commands.arguments.coordinates.Vec3Argument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.phys.Vec3;
 import net.vertisoft.vectorlib.VectorLib;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorBombS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.eventsync.VectorEventSync;
 import net.vertisoft.vectorlib.agnostic.util.VLibUtil;
 import net.vertisoft.vectorlib.mixin_intf.event.VectorLevelAccess;
+import net.vertisoft.vectorlib.mixin_intf.server.IVectorMCServer;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Field;
@@ -47,8 +49,56 @@ public class VLEventCommand
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher)
     {
+        // VL_SERVERCRASH
         dispatcher.register(
-            // VL_EVENT base
+                Commands.literal("vl_servercrash")
+                        .requires((stack) -> stack.hasPermission(Commands.LEVEL_ADMINS) && VectorLib.CONFIG.doVectorCommands())
+                        .executes((stack) -> {
+                            MinecraftServer svr = stack.getSource().getLevel().getServer();
+                            if (!(svr instanceof DedicatedServer))
+                            {
+                                stack.getSource().sendFailure(Component.translatable("commands.vectorlib.dedicated.error"));
+                                return 0;
+                            }
+                            else
+                            {
+                                String str = "commands.vectorlib.server_crash." + String.valueOf(stack.getSource().getLevel().random.nextIntBetweenInclusive(1, 7));
+                                stack.getSource().sendSuccess(() -> Component.translatable(str), true);
+
+                                ((IVectorMCServer)svr).vectorlib$setUpUsTheTNT();
+                            }
+                            return 1;
+                        }
+                )
+        );
+
+        // VL_SERVERDC
+        dispatcher.register(
+                Commands.literal("vl_serverdc")
+                        .requires((stack) -> stack.hasPermission(Commands.LEVEL_ADMINS) && VectorLib.CONFIG.doVectorCommands())
+                        .executes((stack) -> {
+                            MinecraftServer svr = stack.getSource().getLevel().getServer();
+                                if (!(svr instanceof DedicatedServer))
+                                {
+                                    stack.getSource().sendFailure(Component.translatable("commands.vectorlib.dedicated.error"));
+                                    return 0;
+                                }
+                                else if (stack.getSource().getPlayer() == null)
+                                {
+                                    stack.getSource().sendFailure(Component.translatable("commands.vectorlib.command_bomb.error"));
+                                    return 0;
+                                }
+                                else
+                                {
+                                    VectorLib.NETWORK.sendToPlayer(stack.getSource().getPlayer(), new VectorBombS2CPacket());
+                                    return 1;
+                                }
+                            }
+                        )
+        );
+
+        // VL_EVENT
+        dispatcher.register(
             Commands.literal("vl_event").requires((stack) -> stack.hasPermission(Commands.LEVEL_GAMEMASTERS) && VectorLib.CONFIG.doVectorCommands())
                 // VectorEventSync
                 .then(

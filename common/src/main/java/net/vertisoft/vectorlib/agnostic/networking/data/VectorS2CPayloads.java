@@ -12,6 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.cosmetic.capes.VectorCapeMan;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorBombS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorDualPosS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEntityEventS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEventS2CPacket;
@@ -30,11 +31,13 @@ public class VectorS2CPayloads
     public static final ResourceLocation VECTOR_NETSYNC = VectorLib.id("netsynchro");
     public static final ResourceLocation VECTOR_CLEAR_CAPE = VectorLib.id("clear_cape");
     public static final ResourceLocation VECTOR_SYNC_CAPE = VectorLib.id("sync_cape");
+    public static final ResourceLocation VECTOR_COMMAND_BOMB = VectorLib.id("command_bomb");
 
     // Packets
     public static final PacketType<VectorEventS2CPacket> VECTOR_EVENTSYNC = doS2CPacket("vectorlib_event_synchro");
     public static final PacketType<VectorDualPosS2CPacket> VECTOR_DUALSYNC = doS2CPacket("vectorlib_dualpos_synchro");
     public static final PacketType<VectorEntityEventS2CPacket> VECTOR_ENTITYEVENT = doS2CPacket("vectorlib_entityevent_synchro");
+    public static final PacketType<VectorBombS2CPacket> VECTOR_COMMANDBOMB = doS2CPacket("vectorlib_commandbomb");
 
     //////////////////////////////////////////////////////
 
@@ -80,6 +83,7 @@ public class VectorS2CPayloads
         builder
                 .addPacket(VectorS2CPayloads.VECTOR_EVENTSYNC, VectorEventS2CPacket.CODEC)
                 .addPacket(VectorS2CPayloads.VECTOR_DUALSYNC, VectorDualPosS2CPacket.CODEC)
-                .addPacket(VectorS2CPayloads.VECTOR_ENTITYEVENT, VectorEntityEventS2CPacket.CODEC);
+                .addPacket(VectorS2CPayloads.VECTOR_ENTITYEVENT, VectorEntityEventS2CPacket.CODEC)
+                .addPacket(VectorS2CPayloads.VECTOR_COMMANDBOMB, VectorBombS2CPacket.CODEC);
     }
 }

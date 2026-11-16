@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import net.minecraft.FileUtil;
 import net.minecraft.client.Minecraft;
 import net.vertisoft.vectorlib.VectorLib;
-import net.vertisoft.vectorlib.agnostic.VectorSystems;
 
 import java.io.IOException;
 import java.io.Reader;

@@ -2,7 +2,9 @@ package net.vertisoft.vectorlib.mixin.impl.eventsync;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.PacketUtils;
+import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorBombS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorDualPosS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEntityEventS2CPacket;
 import net.vertisoft.vectorlib.agnostic.networking.data.packets.VectorEventS2CPacket;
@@ -12,7 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(ClientPacketListener.class)
-public class ClientPacketMixin extends ClientCommonHandlerMixin implements VectorClientPlay
+public abstract class ClientPacketMixin extends ClientCommonHandlerMixin implements VectorClientPlay
 {
     @Shadow private ClientLevel level;
 
@@ -42,5 +44,12 @@ public class ClientPacketMixin extends ClientCommonHandlerMixin implements Vecto
     {
         PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
         ((VectorLevelAccess)this.minecraft.level).vectorLib$fireEntity(null, packet.getModID(), packet.getEventType(), packet.getEntity(this.level), packet.getData());
+    }
+
+    @Override
+    public void vectorLib$handleCommandBomb(VectorBombS2CPacket packet)
+    {
+        PacketUtils.ensureRunningOnSameThread(packet, (ClientPacketListener)(Object)this, this.minecraft);
+        this.connection.disconnect(this.createDisconnectionInfo(Component.translatable("commands.vectorlib.command_bomb"), new RuntimeException("Player forced themselves off the connection (vl_serverdc)")));
     }
 }

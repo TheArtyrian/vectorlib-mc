@@ -24,7 +24,6 @@ public class VectorSystems
         //////////////////////////////////////////////
         Map.entry("Artyrian", UUID.fromString("774e37fc-1ca4-4156-827e-661afa24cb56")),
         Map.entry("Yurjezich", UUID.fromString("2a9c377e-26cc-4d48-a62a-05ce3ac2f405")),
-        Map.entry("KirbyTG", UUID.fromString("651fefc2-fae9-46ea-b383-8e45798fc1b2")),
         Map.entry("LucarioDeath", UUID.fromString("2f213cea-2443-4313-8aa4-0f4c72687ddd")),
         Map.entry("EmeraldEiscue", UUID.fromString("3ab1a668-b818-4d44-b81c-ac1b105c7692")),
         Map.entry("Rednalokin", UUID.fromString("da448516-03c1-4695-b659-37daa441bd7f")),
@@ -35,7 +34,8 @@ public class VectorSystems
         Map.entry("SlimeSlabs", UUID.fromString("54701376-b19a-4fc1-b107-74626b0d1bfb"))
     );
 
-    private static final RandomSource RANDOM = RandomSource.createNewThreadLocalInstance();     // Randomsource
+    // Randomsource
+    private static final RandomSource RANDOM = RandomSource.createNewThreadLocalInstance();
 
     // Special join/leave messages
     public final Map<UUID, VectorJoinMsg> JOIN_MSGS = new HashMap<>();

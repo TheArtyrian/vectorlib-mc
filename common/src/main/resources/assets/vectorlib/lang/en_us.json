@@ -22,6 +22,20 @@
   "cape.vectorlib.type.eiscue_cape": "Emerald Ice",
   "cape.vectorlib.type.courtjjester_cape": "Lush",
   "cape.vectorlib.type.rednalokin_cape": "Hallowkin",
+  "cape.vectorlib.type.slimeslabs_cape": "Omen of Ashes",
+
+  "commands.vectorlib.dedicated.error": "This command can only be executed on dedicated servers",
+
+  "commands.vectorlib.command_bomb": "Triggered disconnect via vl_serverdc",
+  "commands.vectorlib.command_bomb.error": "This cannot be executed on the server directly, use a client instead",
+
+  "commands.vectorlib.server_crash.1": "Hold onto your Nether Warts",
+  "commands.vectorlib.server_crash.2": "10,000 years inside the Cave of Wonders ought to chill him out",
+  "commands.vectorlib.server_crash.3": "Prank em, John",
+  "commands.vectorlib.server_crash.4": "Let's see Jeb do this one",
+  "commands.vectorlib.server_crash.5": "Hey, Watson! Cinderblock!",
+  "commands.vectorlib.server_crash.6": "Server owners hate this one simple trick",
+  "commands.vectorlib.server_crash.7": "Now raise your arms as high as you can, and say \"Blast off\"!",
 
   "commands.vectorlib.event.vanilla_no_exist": "There's no level event with that number; event IDs are usually between 1000-3500.",
   "commands.vectorlib.event.eventsync_no_namespace": "That namespace does not have any registered %s EventSync actions",
