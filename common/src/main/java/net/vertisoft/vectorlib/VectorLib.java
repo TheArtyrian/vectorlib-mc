@@ -69,23 +69,12 @@ public class VectorLib
         VectorDateEvents.getDates();
 
         VectorLib.strapLibContent();
-        VectorLib.splashes();
         VectorLib.setNewReportErrors();
     }
 
     private static void strapLibContent()
     {
         VectorLib.REGISTRY.registerCommand(VLEventCommand::register);
-    }
-
-    private static void splashes()
-    {
-        // Customs
-        VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Artyrian!"), VectorDateEvents::isBadDay);
-        VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Xenona!"), VectorDateEvents::isXensBday);
-        VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Yurjezich!"), VectorDateEvents::isYurBday);
-        VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Hecco!"), VectorDateEvents::isHeccoBday);
-        VectorSplash.registerSpecial((random) -> new SplashRenderer("Happy birthday, Yirmiri!"), VectorDateEvents::isYirmiriBday);
     }
 
     private static void setNewReportErrors()
@@ -146,7 +135,8 @@ public class VectorLib
                 "You DID make sure you forwarded that port, right?",
                 "The only thing that could make this worse is your IP address getting leaked!",
                 "Steve Breaks the Internet",
-                "Server owners hate this one simple trick"
+                "Server owners hate this one simple trick",
+                "Let's turn this into an excuse to beat up Sam Altman"
         ));
 
         // Profiler

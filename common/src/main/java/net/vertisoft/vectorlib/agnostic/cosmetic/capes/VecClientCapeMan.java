@@ -31,7 +31,11 @@ public class VecClientCapeMan
 
     public static void initialize()
     {
-        if (INITED) throw new IllegalArgumentException("VecClientCapeMan was already initialized");
+        if (INITED)
+        {
+            VectorLib.LOGGER.warn("VecClientCapeMan was already initialized");
+            return;
+        }
         INITED = true;
 
         UUID uid = Minecraft.getInstance().getUser().getProfileId();

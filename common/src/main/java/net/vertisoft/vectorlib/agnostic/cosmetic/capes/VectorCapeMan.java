@@ -3,6 +3,7 @@ package net.vertisoft.vectorlib.agnostic.cosmetic.capes;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.vertisoft.vectorlib.VectorLib;
 import net.vertisoft.vectorlib.agnostic.VectorSystems;
 
 import java.util.*;
@@ -22,7 +23,11 @@ public class VectorCapeMan
 
     public static void init()
     {
-        if (INITED) throw new IllegalArgumentException("VectorCapeMan was already initialized");
+        if (INITED)
+        {
+            VectorLib.LOGGER.warn("VectorCapeMan was already initialized");
+            return;
+        }
         INITED = true;
 
         // Artyrian cape

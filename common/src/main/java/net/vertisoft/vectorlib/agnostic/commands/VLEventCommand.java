@@ -62,7 +62,7 @@ public class VLEventCommand
                             }
                             else
                             {
-                                String str = "commands.vectorlib.server_crash." + String.valueOf(stack.getSource().getLevel().random.nextIntBetweenInclusive(1, 7));
+                                String str = "commands.vectorlib.server_crash." + String.valueOf(stack.getSource().getLevel().random.nextIntBetweenInclusive(1, 10));
                                 stack.getSource().sendSuccess(() -> Component.translatable(str), true);
 
                                 ((IVectorMCServer)svr).vectorlib$setUpUsTheTNT();
